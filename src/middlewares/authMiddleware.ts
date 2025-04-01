@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import { AuthenticationError } from "../errors/AuthenticationError";
 import { MESSAGES } from "../constants/messages";
+import { TOKEN, USER_ID } from "../constants";
+import { TokenPayload } from "../types";
 
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
     try {
@@ -11,7 +13,9 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
             return next(new AuthenticationError(MESSAGES.auth.tokenNotProvided))
         }
 
-        jwt.verify(token, process.env.TOKEN_SECRET!)
+        const decodedToken = jwt.verify(token, TOKEN) as TokenPayload
+
+        res.locals[USER_ID] = decodedToken.id
 
         next()
 

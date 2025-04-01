@@ -4,6 +4,7 @@ import jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import { MESSAGES } from "../../constants/messages";
 import { TokenPayload } from "../../types";
 import { CheckUserAuth } from "../../types/authResponse";
+import { TOKEN } from "../../constants";
 
 export function checkUserAuthController(req: Request, res: Response<CheckUserAuth>, next: NextFunction) {
     try {
@@ -13,7 +14,7 @@ export function checkUserAuthController(req: Request, res: Response<CheckUserAut
             return next(new AuthenticationError(MESSAGES.auth.tokenNotProvided))
         }
 
-        const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET!) as TokenPayload
+        const decodedToken = jwt.verify(token, TOKEN) as TokenPayload
 
         res.status(200).json({
             user: decodedToken
