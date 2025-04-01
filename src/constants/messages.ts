@@ -1,10 +1,14 @@
 export const MESSAGES = {
     user: {
-        usernameTaken: "User with given username already exist"
+        usernameTaken: "User with given username already exist",
+        invalidCredentials: "Username or password are incorrect"
     },
     auth: {
         notAuthenticated: "User not authenticated",
-        forbidden: "User not authorized"
+        forbidden: "User not authorized",
+        tokenNotProvided: "Token not provided",
+        tokenExpired: "Token has expired",
+        tokenInvalid: "Given token is not correct"
     },
     server: {
         fail: "Server failed"
