@@ -15,3 +15,5 @@ export const signUpSchema = z.object({
     message: PASSWORDS_NOT_EQUAL,
     path: ["confirmPassword"]
 })
+
+export type SignUpSchema = z.infer<typeof signUpSchema>
