@@ -1,5 +1,7 @@
 export const FIRST_NAME_EMPTY = "First name can't be empty"
 export const LAST_NAME_EMPTY = "Last name can't be empty"
+export const USERNAME_EMPTY = "Username can't be empty"
+export const PASSWORD_EMPTY = "Password can't be empty"
 export const USERNAME_MIN_LENGTH = 8
 export const USERNAME_MAX_LENGTH = 25
 export const USERNAME_MIN_LENGTH_MESSAGE = `Username length must be atleast ${USERNAME_MIN_LENGTH}`
