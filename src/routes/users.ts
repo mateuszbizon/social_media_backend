@@ -4,5 +4,6 @@ import { signUpController } from "../controllers/users/signUpController"
 const router = express.Router()
 
 router.post("/sign-up", signUpController)
+router.post("/sign-in")
 
 export default router
