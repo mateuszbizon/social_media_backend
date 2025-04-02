@@ -27,7 +27,7 @@ export async function createPostController(req: Request<{}, {}, PostSchema>, res
         const fileUrl = await uploadImageToCloudinary(file.path)
 
         if (!fileUrl) {
-            return next(new DatabaseError())
+            return next(new DatabaseError(undefined, MESSAGES.file.notSaved))
         }
 
         const createdPost = await createPost({

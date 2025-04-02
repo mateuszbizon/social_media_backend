@@ -14,6 +14,7 @@ export const MESSAGES = {
         fail: "Server failed"
     },
     file: {
-        notProvided: "File not provided"
+        notProvided: "File not provided",
+        notSaved: "File saving failed"
     }
 }
