@@ -8,6 +8,7 @@ import { CreatedPost } from "../../types/postResponse";
 import { writeError } from "../../utils/writeError";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
 import { MESSAGES } from "../../constants/messages";
+import { deleteTemporaryFile } from "../../utils/deleteTemporaryFile";
 
 export async function createPostController(req: Request<{}, {}, PostSchema>, res: Response<CreatedPost>, next: NextFunction) {
     const { content } = req.body
@@ -42,5 +43,9 @@ export async function createPostController(req: Request<{}, {}, PostSchema>, res
     } catch (error) {
         console.error(error)
         next(new DatabaseError(writeError(error)))
+    } finally {
+        if (file) {
+            deleteTemporaryFile(file.path)
+        }
     }
 }
