@@ -34,7 +34,8 @@ export async function createPostController(req: Request<{}, {}, PostSchema>, res
         const createdPost = await createPost({
             content,
             authorId: res.locals[USER_ID],
-            image: uploadResult.secureUrl
+            image: uploadResult.secureUrl,
+            imageId: uploadResult.imageId
         })
 
         res.status(201).json({
