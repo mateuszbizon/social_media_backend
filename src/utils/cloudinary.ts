@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
+import { UploadFile } from '../types';
 
 cloudinary.config({
   cloud_name: "dxnthjjaq",
@@ -6,7 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-export async function uploadImageToCloudinary(filePath: string) {
+export async function uploadImageToCloudinary(filePath: string): Promise<UploadFile> {
   try {
     const result = await cloudinary.uploader.upload(filePath, {
       folder: 'social_media',
