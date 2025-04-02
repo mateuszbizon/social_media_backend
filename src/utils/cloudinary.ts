@@ -12,7 +12,7 @@ export async function uploadImageToCloudinary(filePath: string) {
       folder: 'social_media',
     });
 
-    return result.secure_url
+    return { secureUrl: result.secure_url, imageId: result.public_id }
   } catch (error) {
     console.error('Cloudinary upload error:', error);
     return null;

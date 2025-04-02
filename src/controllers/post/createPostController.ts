@@ -25,16 +25,16 @@ export async function createPostController(req: Request<{}, {}, PostSchema>, res
             return next(new BadRequestError(validationResult.error.errors[0].message))
         }
 
-        const fileUrl = await uploadImageToCloudinary(file.path)
+        const uploadResult = await uploadImageToCloudinary(file.path)
 
-        if (!fileUrl) {
+        if (!uploadResult) {
             return next(new DatabaseError(undefined, MESSAGES.file.notSaved))
         }
 
         const createdPost = await createPost({
             content,
             authorId: res.locals[USER_ID],
-            image: fileUrl
+            image: uploadResult.secureUrl
         })
 
         res.status(201).json({
