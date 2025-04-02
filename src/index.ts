@@ -5,6 +5,7 @@ import bodyParser from "body-parser"
 import errorHandler from "./errors/errorHandler"
 import userRoutes from "./routes/users"
 import authRoutes from "./routes/auth"
+import postRoutes from "./routes/post"
 
 dotenv.config()
 
@@ -16,6 +17,7 @@ app.use(cors())
 
 app.use("/users", userRoutes)
 app.use("/auth", authRoutes)
+app.use("/post", postRoutes)
 
 app.use(errorHandler)
 
