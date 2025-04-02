@@ -18,7 +18,7 @@ export async function createPostController(req: Request<{}, {}, PostSchema>, res
             return next(new BadRequestError(MESSAGES.file.notProvided))
         }
 
-        const validationResult = postSchema.safeParse(req.body)
+        const validationResult = postSchema.safeParse({ content, image: file })
 
         if (!validationResult.success) {
             return next(new BadRequestError(validationResult.error.errors[0].message))
