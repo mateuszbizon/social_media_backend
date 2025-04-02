@@ -8,6 +8,7 @@ import { CreatedPost } from "../../types/postResponse";
 
 export async function createPostController(req: Request<{}, {}, PostSchema>, res: Response<CreatedPost>, next: NextFunction) {
     const { content } = req.body
+    const file = req.file
 
     try {
         const validationResult = postSchema.safeParse(req.body)
