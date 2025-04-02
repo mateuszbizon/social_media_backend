@@ -8,7 +8,7 @@ function errorHandler(error: Error, req: Request, res: Response, next: NextFunct
     }
 
     console.error(error)
-    res.status(500).json({ message: "An unknown error occurred" })
+    res.status(500).json({ message: "An unknown error occurred", error })
 }
 
 export default errorHandler

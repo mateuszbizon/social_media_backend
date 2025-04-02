@@ -5,6 +5,7 @@ import { BadRequestError } from "../../errors/BadRequestError";
 import { createPost } from "../../services/post/createPost";
 import { USER_ID } from "../../constants";
 import { CreatedPost } from "../../types/postResponse";
+import { writeError } from "../../utils/writeError";
 
 export async function createPostController(req: Request<{}, {}, PostSchema>, res: Response<CreatedPost>, next: NextFunction) {
     const { content } = req.body
@@ -27,6 +28,6 @@ export async function createPostController(req: Request<{}, {}, PostSchema>, res
         })
     } catch (error) {
         console.error(error)
-        next(new DatabaseError())
+        next(new DatabaseError(writeError(error)))
     }
 }

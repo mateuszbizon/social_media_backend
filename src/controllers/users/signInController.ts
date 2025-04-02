@@ -7,6 +7,7 @@ import { MESSAGES } from "../../constants/messages";
 import bcrypt from "bcryptjs"
 import generateToken from "../../utils/generateToken";
 import { SignInResponse } from "../../types/userResponse";
+import { writeError } from "../../utils/writeError";
 
 export async function signInController(req: Request<{}, {}, SignInSchema>, res: Response<SignInResponse>, next: NextFunction) {
     const { username, password } = req.body
@@ -48,6 +49,6 @@ export async function signInController(req: Request<{}, {}, SignInSchema>, res: 
         })
     } catch (error) {
         console.error(error)
-        next(new DatabaseError())
+        next(new DatabaseError(writeError(error)))
     }
 }

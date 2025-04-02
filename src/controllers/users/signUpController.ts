@@ -7,6 +7,7 @@ import { MESSAGES } from "../../constants/messages";
 import bcrypt from "bcryptjs"
 import { createUser } from "../../services/users/createUser";
 import { SignUpResponse } from "../../types/userResponse";
+import { writeError } from "../../utils/writeError";
 
 export async function signUpController(req: Request<{}, {}, SignUpSchema>, res: Response<SignUpResponse>, next: NextFunction) {
     const { firstName, lastName, username, password } = req.body
@@ -38,6 +39,6 @@ export async function signUpController(req: Request<{}, {}, SignUpSchema>, res: 
         })
     } catch (error) {
         console.error(error)
-        next(new DatabaseError())
+        next(new DatabaseError(writeError(error)))
     }
 }
