@@ -8,5 +8,6 @@ const router = express.Router()
 
 router.post("/create-post", authMiddleware, uploadFile.single("image"), createPostController)
 router.patch("/update-post/:postId", authMiddleware, uploadFile.single("image"), updatePostController)
+router.delete("/delete-post/:postId")
 
 export default router
