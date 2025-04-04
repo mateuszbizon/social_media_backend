@@ -5,3 +5,7 @@ export type UpdatePostParams = {
 export type CreateCommentParams = {
     postId: string
 }
+
+export type DeleteCommentParams = {
+    commentId: string
+}

@@ -18,6 +18,9 @@ export const MESSAGES = {
         notSaved: "File saving failed"
     },
     post: {
-        notFound: "Post with given id not found"
+        notFound: "Post not found"
+    },
+    comment: {
+        notFound: "Comment not found"
     }
 }
