@@ -5,5 +5,6 @@ import { createCommentController } from "../controllers/comment/createCommentCon
 const router = express.Router()
 
 router.post("/create-comment/:postId", authMiddleware, createCommentController)
+router.delete("/delete-comment/:commentId")
 
 export default router
