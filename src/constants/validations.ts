@@ -15,3 +15,5 @@ export const POST_CONTENT_EMPTY = "Content can't be empty"
 
 export const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png"]
 export const FILE_TYPE_NOT_ALLOWED = "Not allowed file type. JPG or PNG allowed"
+
+export const COMMENT_EMPTY = "Comment can't be empty"
