@@ -6,6 +6,7 @@ import errorHandler from "./errors/errorHandler"
 import userRoutes from "./routes/users"
 import authRoutes from "./routes/auth"
 import postRoutes from "./routes/post"
+import commentRoutes from "./routes/comment"
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use(cors())
 app.use("/users", userRoutes)
 app.use("/auth", authRoutes)
 app.use("/post", postRoutes)
+app.use("/comment", commentRoutes)
 
 app.use(errorHandler)
 
