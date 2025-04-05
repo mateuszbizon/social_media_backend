@@ -13,6 +13,7 @@ import { deleteImageInCloudinary, updateImageInCloudinary, uploadImageToCloudina
 import { updatePost } from "../../services/post/updatePost";
 import { CreatedPost } from "../../types/postResponse";
 import { UploadFile } from "../../types";
+import { deleteTemporaryFile } from "../../utils/deleteTemporaryFile";
 
 export async function updatePostController(req: Request<UpdatePostParams, {}, PostSchema>, res: Response<CreatedPost>, next: NextFunction) {
     const { content } = req.body
@@ -77,5 +78,9 @@ export async function updatePostController(req: Request<UpdatePostParams, {}, Po
     } catch (error) {
         console.error(error)
         next(new DatabaseError(writeError(error)))
+    } finally {
+        if (file) {
+            deleteTemporaryFile(file.path)
+        }
     }
 }
