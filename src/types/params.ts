@@ -9,3 +9,7 @@ export type CreateCommentParams = {
 export type DeleteCommentParams = {
     commentId: string
 }
+
+export type LikePostParams = {
+    postId: string
+}
