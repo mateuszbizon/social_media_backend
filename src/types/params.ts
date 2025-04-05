@@ -17,3 +17,7 @@ export type LikePostParams = {
 export type LikeCommentParams = {
     commentId: string
 }
+
+export type GetPostParams = {
+    postId: string
+}
