@@ -12,5 +12,6 @@ router.post("/create-post", authMiddleware, uploadFile.single("image"), createPo
 router.patch("/update-post/:postId", authMiddleware, uploadFile.single("image"), updatePostController)
 router.delete("/delete-post/:postId", authMiddleware, deletePostController)
 router.patch("/like-post/:postId", authMiddleware, likePostController)
+router.get("/get-post/:postId")
 
 export default router
