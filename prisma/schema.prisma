@@ -21,6 +21,7 @@ model User {
   username    String       @unique
   password    String
   avatar      String?
+  avatarId    String?
   posts       Post[]
   comments    Comment[]
   postLikes   PostLike[]
