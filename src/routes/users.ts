@@ -8,5 +8,6 @@ const router = express.Router()
 router.post("/sign-up", signUpController)
 router.post("/sign-in", signInController)
 router.get("/get-user-profile/:username", getUserProfileController)
+router.patch("/update-user-profile")
 
 export default router
