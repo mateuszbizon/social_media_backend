@@ -13,3 +13,7 @@ export type GetUserProfileResponse = {
     user: Pick<User, "firstName" | "lastName" | "username" | "avatar">
     postsCount: number
 }
+
+export type UpdateUserProfileResponse = {
+    user: Pick<User, "firstName" | "lastName" | "username" | "avatar">
+}
