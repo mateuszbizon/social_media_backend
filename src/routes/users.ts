@@ -12,5 +12,6 @@ router.post("/sign-up", signUpController)
 router.post("/sign-in", signInController)
 router.get("/get-user-profile/:username", getUserProfileController)
 router.patch("/update-user-profile", authMiddleware, uploadFile.single("avatar"), updateUserProfileController)
+router.patch("/update-user-password")
 
 export default router
