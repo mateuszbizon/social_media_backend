@@ -9,3 +9,5 @@ export const updateUserPasswordSchema = z.object({
     message: PASSWORDS_NOT_EQUAL,
     path: ["confirmPassword"],
 });
+
+export type UpdateUserPasswordSchema = z.infer<typeof updateUserPasswordSchema>

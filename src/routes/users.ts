@@ -5,6 +5,7 @@ import { getUserProfileController } from "../controllers/users/getUserProfileCon
 import { authMiddleware } from "../middlewares/authMiddleware"
 import { uploadFile } from "../utils/uploadFile"
 import { updateUserProfileController } from "../controllers/users/updateUserProfileController"
+import { updateUserPasswordController } from "../controllers/users/updateUserPasswordController"
 
 const router = express.Router()
 
@@ -12,6 +13,6 @@ router.post("/sign-up", signUpController)
 router.post("/sign-in", signInController)
 router.get("/get-user-profile/:username", getUserProfileController)
 router.patch("/update-user-profile", authMiddleware, uploadFile.single("avatar"), updateUserProfileController)
-router.patch("/update-user-password")
+router.patch("/update-user-password", authMiddleware, updateUserPasswordController)
 
 export default router
