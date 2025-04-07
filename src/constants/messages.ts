@@ -3,7 +3,8 @@ export const MESSAGES = {
         usernameTaken: "User with given username already exist",
         invalidCredentials: "Username or password are incorrect",
         notFound: "User not found",
-        invalidOldPassword: "Old password is incorrect"
+        invalidOldPassword: "Old password is incorrect",
+        followYourself: "You can't follow yourself"
     },
     auth: {
         notAuthenticated: "User not authenticated",

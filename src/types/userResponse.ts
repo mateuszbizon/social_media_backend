@@ -12,6 +12,8 @@ export type SignInResponse = {
 export type GetUserProfileResponse = {
     user: Pick<User, "firstName" | "lastName" | "username" | "avatar">
     postsCount: number
+    followersCount: number
+    followingCount: number
 }
 
 export type UpdateUserProfileResponse = {

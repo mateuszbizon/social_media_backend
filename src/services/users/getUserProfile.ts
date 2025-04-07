@@ -14,7 +14,9 @@ export function getUserProfile(username: string) {
             avatar: true,
             _count: {
                 select: {
-                    posts: true
+                    posts: true,
+                    followers: true,
+                    following: true
                 }
             }
         }
