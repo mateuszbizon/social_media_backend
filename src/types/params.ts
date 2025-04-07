@@ -33,3 +33,7 @@ export type CreateReplyParams = {
 export type DeleteReplyParams = {
     replyId: string
 }
+
+export type FollowUserParams = {
+    userId: string
+}
