@@ -2,7 +2,8 @@ export const MESSAGES = {
     user: {
         usernameTaken: "User with given username already exist",
         invalidCredentials: "Username or password are incorrect",
-        notFound: "User not found"
+        notFound: "User not found",
+        invalidOldPassword: "Old password is incorrect"
     },
     auth: {
         notAuthenticated: "User not authenticated",
