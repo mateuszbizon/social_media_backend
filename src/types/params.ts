@@ -25,3 +25,7 @@ export type GetPostParams = {
 export type GetUserProfileParams = {
     username: string
 }
+
+export type CreateReplyParams = {
+    commentId: string
+}
