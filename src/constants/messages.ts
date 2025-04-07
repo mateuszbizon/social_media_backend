@@ -24,5 +24,8 @@ export const MESSAGES = {
     },
     comment: {
         notFound: "Comment not found"
+    },
+    reply: {
+        notFound: "Comment reply not found"
     }
 }

@@ -29,3 +29,7 @@ export type GetUserProfileParams = {
 export type CreateReplyParams = {
     commentId: string
 }
+
+export type DeleteReplyParams = {
+    replyId: string
+}
