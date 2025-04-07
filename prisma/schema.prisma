@@ -28,6 +28,8 @@ model User {
   postLikes   PostLike[]
   commentLikes CommentLike[]
   replyLikes  ReplyLike[]
+  following     Follow[]  @relation("Following")
+  followers     Follow[]  @relation("Followers")
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }
@@ -101,4 +103,15 @@ model ReplyLike {
   createdAt DateTime @default(now())
 
   @@unique([userId, replyId])
+}
+
+model Follow {
+  id            String   @id @default(uuid())
+  follower      User     @relation("Following", fields: [followerId], references: [id])
+  followerId    String
+  following     User     @relation("Followers", fields: [followingId], references: [id])
+  followingId   String
+  createdAt     DateTime @default(now())
+
+  @@unique([followerId, followingId])
 }
