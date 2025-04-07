@@ -5,5 +5,6 @@ import { createReplyController } from "../controllers/reply/createReplyControlle
 const router = express.Router()
 
 router.post("/create-reply/:commentId", authMiddleware, createReplyController)
+router.delete("/delete-reply/:replyId")
 
 export default router
