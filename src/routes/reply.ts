@@ -9,5 +9,6 @@ const router = express.Router()
 router.post("/create-reply/:commentId", authMiddleware, createReplyController)
 router.delete("/delete-reply/:replyId", authMiddleware, deleteReplyController)
 router.patch("/like-reply/:replyId", authMiddleware, likeReplyController)
+router.get("/get-comment-replies/:commentId")
 
 export default router
