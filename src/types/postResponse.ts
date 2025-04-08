@@ -14,3 +14,16 @@ export type GetPostResponse = {
     commentsCount: number
     likes: Pick<PostLike, "userId">[]
 }
+
+export type GetUserPostsResponse = {
+    posts: {
+        id: Post["id"]
+        image: Post["image"]
+        createdAt: Post["createdAt"]
+        likeCount: number
+        commentCount: number
+    }[]
+    currentPage: number
+    totalPages: number
+    totalPosts: number
+}
