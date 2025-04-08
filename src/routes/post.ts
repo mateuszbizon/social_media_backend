@@ -14,5 +14,6 @@ router.patch("/update-post/:postId", authMiddleware, uploadFile.single("image"),
 router.delete("/delete-post/:postId", authMiddleware, deletePostController)
 router.patch("/like-post/:postId", authMiddleware, likePostController)
 router.get("/get-post/:postId", getPostController)
+router.get("/get-user-posts/:userId")
 
 export default router
