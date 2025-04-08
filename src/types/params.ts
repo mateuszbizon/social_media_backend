@@ -37,3 +37,7 @@ export type DeleteReplyParams = {
 export type FollowUserParams = {
     userId: string
 }
+
+export type GetCommentRepliesParams = {
+    commentId: string
+}
