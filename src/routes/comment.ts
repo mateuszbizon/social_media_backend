@@ -9,5 +9,6 @@ const router = express.Router()
 router.post("/create-comment/:postId", authMiddleware, createCommentController)
 router.delete("/delete-comment/:commentId", authMiddleware, deleteCommentController)
 router.patch("/like-comment/:commentId", authMiddleware, likeCommentController)
+router.get("/get-post-comments/:postId")
 
 export default router
