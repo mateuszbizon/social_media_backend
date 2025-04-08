@@ -28,7 +28,13 @@ export async function getUserPostsController(req: Request<FollowUserParams, {}, 
         })
 
         res.status(200).json({
-            posts: posts.posts,
+            posts: posts.posts.map(post => {
+                return {
+                    ...post, 
+                    likeCount: post._count.likes,
+                    commentCount: post._count.comments
+                }
+            }),
             currentPage: posts.currentPage,
             totalPages: posts.totalPages,
             totalPosts: posts.totalPosts

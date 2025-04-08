@@ -20,10 +20,8 @@ export type GetUserPostsResponse = {
         id: Post["id"]
         image: Post["image"]
         createdAt: Post["createdAt"]
-        _count: {
-            likes: number
-            comments: number
-        }
+        likeCount: number
+        commentCount: number
     }[]
     currentPage: number
     totalPages: number
