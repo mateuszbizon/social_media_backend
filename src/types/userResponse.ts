@@ -19,3 +19,16 @@ export type GetUserProfileResponse = {
 export type UpdateUserProfileResponse = {
     user: Pick<User, "firstName" | "lastName" | "username" | "avatar">
 }
+
+export type SearchUsersResponse = {
+    users: {
+        username: User["username"]
+        firstName: User["firstName"]
+        lastName: User["lastName"]
+        avatar: User["avatar"]
+        followersCount: number
+    }[]
+    totalPages: number
+    currentPage: number
+    totalUsers: number
+}
