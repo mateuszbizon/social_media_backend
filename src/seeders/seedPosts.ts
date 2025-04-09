@@ -1,4 +1,5 @@
 import { Post, PrismaClient } from "../../generated/prisma";
+import { faker } from "@faker-js/faker"
 
 const prisma = new PrismaClient()
 
@@ -16,11 +17,15 @@ async function seedPosts() {
 
     for (let i = 0; i < 20; i++) {
         const randomUser = users[Math.floor(Math.random() * users.length)]
-        
-        data.push({ content: "", authorId: randomUser.id })  
+
+        data.push({ content: faker.lorem.sentences({ min: 2, max: 5 }), authorId: randomUser.id })  
     }
 
-    console.log(data)
+    await prisma.post.createMany({
+        data
+    })
+
+    console.log("Posts created")
 }
 
 seedPosts().then(async () => {
