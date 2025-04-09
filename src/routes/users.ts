@@ -16,5 +16,6 @@ router.get("/get-user-profile/:username", getUserProfileController)
 router.patch("/update-user-profile", authMiddleware, uploadFile.single("avatar"), updateUserProfileController)
 router.patch("/update-user-password", authMiddleware, updateUserPasswordController)
 router.patch("/follow-user/:userId", authMiddleware, followUserController)
+router.get("/search-users")
 
 export default router
