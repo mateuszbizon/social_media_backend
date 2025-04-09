@@ -22,6 +22,7 @@ export async function getUserPosts({ userId, page, sort }: Props) {
             },
             select: {
                 id: true,
+                content: true,
                 image: true,
                 createdAt: true,
                 _count: {

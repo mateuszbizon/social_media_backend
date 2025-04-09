@@ -18,6 +18,7 @@ export type GetPostResponse = {
 export type GetUserPostsResponse = {
     posts: {
         id: Post["id"]
+        content: Post["content"]
         image: Post["image"]
         createdAt: Post["createdAt"]
         likeCount: number
