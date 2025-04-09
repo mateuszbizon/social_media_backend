@@ -12,6 +12,7 @@ export type GetPostCommentsResponse = {
     comments: {
         id: Comment["id"]
         content: Comment["content"]
+        createdAt: Comment["createdAt"]
         likes: {
             userId: CommentLike["userId"]
         }[]

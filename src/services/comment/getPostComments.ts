@@ -28,6 +28,7 @@ export async function getPostComments({ postId, page, sort }: Props) {
             select: {
                 id: true,
                 content: true,
+                createdAt: true,
                 likes: {
                     select: {
                         userId: true
