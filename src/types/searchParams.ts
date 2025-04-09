@@ -11,3 +11,8 @@ export type GetPostCommentsSearchParams = {
 export type GetCommentRepliesSearchParams = {
     page: number
 }
+
+export type SearchUsersSearchParams = {
+    page: number
+    query: string
+}
