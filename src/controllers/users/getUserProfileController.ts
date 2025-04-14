@@ -19,6 +19,7 @@ export async function getUserProfileController(req: Request<GetUserProfileParams
 
         res.status(200).json({
             user: {
+                id: user.id,
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,

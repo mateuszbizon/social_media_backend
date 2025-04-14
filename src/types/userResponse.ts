@@ -10,7 +10,7 @@ export type SignInResponse = {
 }
 
 export type GetUserProfileResponse = {
-    user: Pick<User, "firstName" | "lastName" | "username" | "avatar">
+    user: Pick<User, "firstName" | "lastName" | "username" | "avatar" | "id">
     postsCount: number
     followersCount: number
     followingCount: number

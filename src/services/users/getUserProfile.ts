@@ -8,6 +8,7 @@ export function getUserProfile(username: string) {
             username
         },
         select: {
+            id: true,
             username: true,
             firstName: true,
             lastName: true,
