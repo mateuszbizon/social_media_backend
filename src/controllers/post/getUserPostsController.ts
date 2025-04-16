@@ -37,7 +37,8 @@ export async function getUserPostsController(req: Request<FollowUserParams, {}, 
             }),
             currentPage: posts.currentPage,
             totalPages: posts.totalPages,
-            totalPosts: posts.totalPosts
+            totalPosts: posts.totalPosts,
+            nextPage: posts.nextPage
         })
     } catch (error) {
         console.error(error)

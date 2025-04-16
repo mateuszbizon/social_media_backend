@@ -40,10 +40,13 @@ export async function getUserPosts({ userId, page, sort }: Props) {
         })
     ])
 
+    const totalPages = Math.ceil(totalPosts / limit)
+
     return {
         posts,
         currentPage: page,
-        totalPages: Math.ceil(totalPosts / limit),
-        totalPosts
+        totalPages,
+        totalPosts,
+        nextPage: page < totalPages ? page + 1 : null
     }
 }

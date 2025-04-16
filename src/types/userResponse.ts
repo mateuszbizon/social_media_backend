@@ -31,4 +31,5 @@ export type SearchUsersResponse = {
     totalPages: number
     currentPage: number
     totalUsers: number
+    nextPage: number | null
 }

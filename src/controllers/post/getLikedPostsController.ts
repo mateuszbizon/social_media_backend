@@ -35,7 +35,8 @@ export async function getLikedPostsController(req: Request, res: Response<GetUse
             }),
             currentPage: posts.currentPage,
             totalPages: posts.totalPages,
-            totalPosts: posts.totalPosts
+            totalPosts: posts.totalPosts,
+            nextPage: posts.nextPage
         })
     } catch (error) {
         console.error(error)

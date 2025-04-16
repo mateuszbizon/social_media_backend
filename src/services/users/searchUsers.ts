@@ -46,10 +46,13 @@ export async function searchUsers({ page, query }: SearchUsersSearchParams) {
         })
     ])
 
+    const totalPages = Math.ceil(totalUsers / limit)
+
     return {
         users,
         currentPage: page,
-        totalPages: Math.ceil(totalUsers / limit),
-        totalUsers
+        totalPages,
+        totalUsers,
+        nextPage: page < totalPages ? page + 1 : null
     }
 }

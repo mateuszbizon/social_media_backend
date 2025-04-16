@@ -24,7 +24,8 @@ export async function searchUsersController(req: Request<{}, {}, {}, SearchUsers
             }),
             totalPages: users.totalPages,
             currentPage: users.currentPage,
-            totalUsers: users.totalUsers
+            totalUsers: users.totalUsers,
+            nextPage: users.nextPage
         })
     } catch (error) {
         console.error(error)

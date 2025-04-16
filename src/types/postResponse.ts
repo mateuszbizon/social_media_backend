@@ -27,4 +27,5 @@ export type GetUserPostsResponse = {
     currentPage: number
     totalPages: number
     totalPosts: number
+    nextPage: number | null
 }
