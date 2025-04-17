@@ -19,7 +19,7 @@ export async function searchUsers({ page, query }: SearchUsersSearchParams) {
             skip,
             take: limit,
             orderBy: {
-                following: {
+                followers: {
                     _count: "desc"
                 }
             },
