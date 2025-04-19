@@ -6,7 +6,7 @@ export type SignUpResponse = {
 
 export type SignInResponse = {
     token: string
-    user: Pick<User, "id" | "firstName" | "lastName" | "username">
+    user: Pick<User, "id" | "firstName" | "lastName" | "username" | "avatar">
 }
 
 export type GetUserProfileResponse = {

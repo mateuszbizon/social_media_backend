@@ -35,7 +35,8 @@ export async function signInController(req: Request<{}, {}, SignInSchema>, res: 
             id: existingUser.id,
             username: existingUser.username,
             firstName: existingUser.firstName,
-            lastName: existingUser.lastName
+            lastName: existingUser.lastName,
+            avatar: existingUser.avatar
         })
 
         res.status(200).json({
@@ -44,7 +45,8 @@ export async function signInController(req: Request<{}, {}, SignInSchema>, res: 
                 id: existingUser.id,
                 username: existingUser.username,
                 firstName: existingUser.firstName,
-                lastName: existingUser.lastName
+                lastName: existingUser.lastName,
+                avatar: existingUser.avatar
             }
         })
     } catch (error) {
