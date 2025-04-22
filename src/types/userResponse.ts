@@ -17,7 +17,8 @@ export type GetUserProfileResponse = {
 }
 
 export type UpdateUserProfileResponse = {
-    user: Pick<User, "firstName" | "lastName" | "username" | "avatar">
+    user: Pick<User, "firstName" | "lastName" | "username" | "avatar" | "id">
+    token: string
 }
 
 export type SearchUsersResponse = {

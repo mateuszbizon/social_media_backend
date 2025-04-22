@@ -13,6 +13,7 @@ import { deleteImageInCloudinary, updateImageInCloudinary, uploadImageToCloudina
 import { updateUserProfile } from "../../services/users/updateUserProfile";
 import { UpdateUserProfileResponse } from "../../types/userResponse";
 import { deleteTemporaryFile } from "../../utils/deleteTemporaryFile";
+import generateToken from "../../utils/generateToken";
 
 export async function updateUserProfileController(req: Request<{}, {}, UpdateUserSchema>, res: Response<UpdateUserProfileResponse>, next: NextFunction) {
     const { username, firstName, lastName } = req.body
@@ -74,13 +75,23 @@ export async function updateUserProfileController(req: Request<{}, {}, UpdateUse
             avatarId: imageDeleted ? null : uploadResult ? uploadResult.imageId : null
         })
 
+        const token = generateToken({
+            id: updatedUserProfile.id,
+            username: updatedUserProfile.username,
+            firstName: updatedUserProfile.firstName,
+            lastName: updatedUserProfile.lastName,
+            avatar: updatedUserProfile.avatar
+        })
+
         res.status(200).json({
             user: {
+                id: updatedUserProfile.id,
                 firstName: updatedUserProfile.firstName,
                 lastName: updatedUserProfile.lastName,
                 username: updatedUserProfile.username,
                 avatar: updatedUserProfile.avatar
-            }
+            },
+            token
         })
     } catch (error) {
         console.error(error)
