@@ -25,6 +25,7 @@ export async function getPostController(req: Request<GetPostParams>, res: Respon
                 createdAt: post.createdAt
             },
             author: {
+                id: post.author.id,
                 username: post.author.username,
                 avatar: post.author.avatar
             },

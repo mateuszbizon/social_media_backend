@@ -10,7 +10,7 @@ export type LikePostResponse = {
 
 export type GetPostResponse = {
     post: Pick<Post, "id" | "content" | "image" | "createdAt">
-    author: Pick<User, "username" | "avatar">
+    author: Pick<User, "username" | "avatar" | "id">
     commentsCount: number
     likes: Pick<PostLike, "userId">[]
 }

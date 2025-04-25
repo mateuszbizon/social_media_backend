@@ -15,7 +15,8 @@ export async function getFullPost(postId: string) {
             author: {
                 select: {
                     username: true,
-                    avatar: true
+                    avatar: true,
+                    id: true
                 }
             },
             likes: {
