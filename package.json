@@ -8,7 +8,8 @@
     "build": "tsc --build",
     "start": "node ./dist/index.js",
     "dev": "nodemon ./src/index.ts",
-    "seed:posts": "ts-node ./src/seeders/seedPosts.ts"
+    "seed:posts": "ts-node ./src/seeders/seedPosts.ts",
+    "seed:comments": "ts-node ./src/seeders/seedComments.ts"
   },
   "keywords": [],
   "author": "",
