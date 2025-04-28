@@ -54,10 +54,13 @@ export async function getPostComments({ postId, page, sort }: Props) {
         })
     ])
 
+    const totalPages = Math.ceil(totalComments / limit)
+
     return {
         comments,
         currentPage: page,
-        totalPages: Math.ceil(totalComments / limit),
-        totalComments
+        totalPages,
+        totalComments,
+        nextPage: page < totalPages ? page + 1 : null
     }
 }

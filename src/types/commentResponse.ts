@@ -25,4 +25,5 @@ export type GetPostCommentsResponse = {
     totalPages: number
     currentPage: number
     totalComments: number
+    nextPage: number | null
 }

@@ -36,7 +36,8 @@ export async function getPostCommentsController(req: Request<GetPostParams, {}, 
             }),
             currentPage: comments.currentPage,
             totalPages: comments.totalPages,
-            totalComments: comments.totalComments
+            totalComments: comments.totalComments,
+            nextPage: comments.nextPage
         })
     } catch (error) {
         console.error(error)
