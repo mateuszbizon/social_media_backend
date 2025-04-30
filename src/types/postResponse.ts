@@ -29,3 +29,5 @@ export type GetUserPostsResponse = {
     totalPosts: number
     nextPage: number | null
 }
+
+export type GetBasicPostResponse = Pick<Post, "id" | "content" | "image" | "authorId">
