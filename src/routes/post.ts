@@ -8,6 +8,7 @@ import { likePostController } from "../controllers/post/likePostController"
 import { getPostController } from "../controllers/post/getPostController"
 import { getUserPostsController } from "../controllers/post/getUserPostsController"
 import { getLikedPostsController } from "../controllers/post/getLikedPostsController"
+import { getBasicPostController } from "../controllers/post/getBasicPostController"
 
 const router = express.Router()
 
@@ -18,6 +19,6 @@ router.patch("/like-post/:postId", authMiddleware, likePostController)
 router.get("/get-post/:postId", getPostController)
 router.get("/get-user-posts/:userId", getUserPostsController)
 router.get("/get-liked-posts", authMiddleware, getLikedPostsController)
-router.get("/get-basic-post/:postId")
+router.get("/get-basic-post/:postId", getBasicPostController)
 
 export default router
