@@ -18,5 +18,6 @@ router.patch("/like-post/:postId", authMiddleware, likePostController)
 router.get("/get-post/:postId", getPostController)
 router.get("/get-user-posts/:userId", getUserPostsController)
 router.get("/get-liked-posts", authMiddleware, getLikedPostsController)
+router.get("/get-basic-post/:postId")
 
 export default router
