@@ -10,6 +10,28 @@ export async function createComment({ content, postId, authorId }: Props) {
             content,
             postId,
             authorId
+        },
+        select: {
+            id: true,
+            content: true,
+            createdAt: true,
+            author: {
+                select: {
+                    id: true,
+                    username: true,
+                    avatar: true
+                }
+            },
+            likes: {
+                select: {
+                    userId: true
+                }
+            },
+            _count: {
+                select: {
+                    replies: true
+                }
+            }
         }
     })
 }

@@ -35,7 +35,18 @@ export async function createCommentController(req: Request<CreateCommentParams, 
         })
 
         res.status(201).json({
-            comment: createdComment
+            comment: {
+                id: createdComment.id,
+                content: createdComment.content,
+                createdAt: createdComment.createdAt,
+                author: {
+                    id: createdComment.author.id,
+                    username: createdComment.author.username,
+                    avatar: createdComment.author.avatar
+                },
+                likes: createdComment.likes,
+                replyCount: createdComment._count.replies
+            }
         })
     } catch (error) {
         console.error(error)

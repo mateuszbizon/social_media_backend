@@ -6,9 +6,9 @@ import { getCommentById } from "../../services/comment/getCommentById";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { MESSAGES } from "../../constants/messages";
 import { deleteComment } from "../../services/comment/deleteComment";
-import { CreateCommentResponse } from "../../types/commentResponse";
+import { DeleteCommentResponse } from "../../types/commentResponse";
 
-export async function deleteCommentController(req: Request<DeleteCommentParams>, res: Response<CreateCommentResponse>, next: NextFunction) {
+export async function deleteCommentController(req: Request<DeleteCommentParams>, res: Response<DeleteCommentResponse>, next: NextFunction) {
     const { commentId } = req.params
 
     try {

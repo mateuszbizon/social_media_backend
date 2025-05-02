@@ -41,6 +41,7 @@ export async function getPostComments({ postId, page, sort }: Props) {
                 },
                 author: {
                     select: {
+                        id: true,
                         username: true,
                         avatar: true
                     }
