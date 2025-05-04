@@ -29,7 +29,8 @@ export async function getCommentRepliesController(req: Request<GetCommentReplies
             replies: replies.replies,
             currentPage: replies.currentPage,
             totalPages: replies.totalPages,
-            totalReplies: replies.totalReplies
+            totalReplies: replies.totalReplies,
+            nextPage: replies.nextPage
         })
     } catch (error) {
         console.error(error)

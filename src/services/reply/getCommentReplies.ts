@@ -32,6 +32,7 @@ export async function getCommentReplies({ commentId, page }: Props) {
                 },
                 author: {
                     select: {
+                        id: true,
                         username: true,
                         avatar: true
                     }
@@ -45,10 +46,13 @@ export async function getCommentReplies({ commentId, page }: Props) {
         })
     ])
 
+    const totalPages = Math.ceil(totalReplies / limit)
+
     return {
         replies,
         currentPage: page,
-        totalPages: Math.ceil(totalReplies / limit),
-        totalReplies
+        totalPages,
+        totalReplies,
+        nextPage: page < totalPages ? page + 1 : null,
     }
 }
