@@ -24,7 +24,8 @@ model User {
   avatarId    String?
   posts       Post[]
   comments    Comment[]
-  replies     Reply[]
+  replies     Reply[] @relation("Replying")
+  repliesTo     Reply[] @relation("ReplyingTo")
   postLikes   PostLike[]
   commentLikes CommentLike[]
   replyLikes  ReplyLike[]
@@ -65,8 +66,10 @@ model Reply {
   content   String
   comment   Comment     @relation(fields: [commentId], references: [id], onDelete: Cascade)
   commentId    String
-  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author    User     @relation("Replying", fields: [authorId], references: [id], onDelete: Cascade)
   authorId  String
+  replyingTo User @relation("ReplyingTo", fields: [replyingToId], references: [id], onDelete: Cascade)
+  replyingToId String
   likes     ReplyLike[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
