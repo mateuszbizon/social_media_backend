@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker"
 const prisma = new PrismaClient()
 
 export async function seedReplies() {
-    const data: Pick<Reply, "content" | "authorId" | "commentId">[] = []
+    const data: Pick<Reply, "content" | "authorId" | "commentId" | "replyingToId">[] = []
     const users = await prisma.user.findMany({
         select: {
             id: true
@@ -27,12 +27,14 @@ export async function seedReplies() {
 
     for (let i = 0; i < 60; i++) {
         const randomUser = users[Math.floor(Math.random() * users.length)]
+        const randomReplyingUser = users[Math.floor(Math.random() * users.length)]
         const randomComment = comments[Math.floor(Math.random() * comments.length)]
 
         data.push({
             content: faker.lorem.sentences({ min: 2, max: 5 }),
             authorId: randomUser.id,
             commentId: randomComment.id,
+            replyingToId: randomReplyingUser.id
         })
     }
 
