@@ -13,7 +13,7 @@ import { CreateReplyResponse } from "../../types/replyResponse";
 
 export async function createReplyController(req: Request<CreateReplyParams, {}, CommentSchema>, res: Response<CreateReplyResponse>, next: NextFunction) {
     const { content } = req.body
-    const { commentId } = req.params
+    const { commentId, replyingToId } = req.params
 
     try {
         const validationResult = commentSchema.safeParse(req.body)
@@ -31,7 +31,8 @@ export async function createReplyController(req: Request<CreateReplyParams, {}, 
         const createdReply = await createReply({
             content,
             commentId,
-            authorId: res.locals[USER_ID]
+            authorId: res.locals[USER_ID],
+            replyingToId
         })
 
         res.status(201).json({

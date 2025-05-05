@@ -28,6 +28,7 @@ export type GetUserProfileParams = {
 
 export type CreateReplyParams = {
     commentId: string
+    replyingToId: string
 }
 
 export type DeleteReplyParams = {
