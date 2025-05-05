@@ -6,9 +6,9 @@ import { getReplyById } from "../../services/reply/getReplyById";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { MESSAGES } from "../../constants/messages";
 import { deleteReply } from "../../services/reply/deleteReply";
-import { CreateReplyResponse } from "../../types/replyResponse";
+import { DeleteReplyResponse } from "../../types/replyResponse";
 
-export async function deleteReplyController(req: Request<DeleteReplyParams>, res: Response<CreateReplyResponse>, next: NextFunction) {
+export async function deleteReplyController(req: Request<DeleteReplyParams>, res: Response<DeleteReplyResponse>, next: NextFunction) {
     const { replyId } = req.params
 
     try {

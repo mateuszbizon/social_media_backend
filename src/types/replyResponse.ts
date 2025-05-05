@@ -7,6 +7,10 @@ export type CommentReply = Pick<Reply, "id" | "content" | "createdAt"> & {
 }
 
 export type CreateReplyResponse = {
+    reply: CommentReply
+}
+
+export type DeleteReplyResponse = {
     reply: Reply
 }
 

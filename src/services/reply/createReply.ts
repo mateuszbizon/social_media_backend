@@ -11,6 +11,29 @@ export function createReply({ commentId, content, authorId, replyingToId }: Prop
             commentId,
             authorId,
             replyingToId
+        },
+        select: {
+            id: true,
+            content: true,
+            createdAt: true,
+            author: {
+                select: {
+                    id: true,
+                    username: true,
+                    avatar: true
+                }
+            },
+            likes: {
+                select: {
+                    userId: true
+                }
+            },
+            replyingTo: {
+                select: {
+                    id: true,
+                    username: true
+                }
+            }
         }
     })
 }
