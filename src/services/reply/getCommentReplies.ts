@@ -36,6 +36,12 @@ export async function getCommentReplies({ commentId, page }: Props) {
                         username: true,
                         avatar: true
                     }
+                },
+                replyingTo: {
+                    select: {
+                        id: true,
+                        username: true
+                    }
                 }
             }
         }),
