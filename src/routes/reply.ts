@@ -7,7 +7,7 @@ import { getCommentRepliesController } from "../controllers/reply/getCommentRepl
 
 const router = express.Router()
 
-router.post("/create-reply/:commentId", authMiddleware, createReplyController)
+router.post("/create-reply/:commentId/:replyingToId", authMiddleware, createReplyController)
 router.delete("/delete-reply/:replyId", authMiddleware, deleteReplyController)
 router.patch("/like-reply/:replyId", authMiddleware, likeReplyController)
 router.get("/get-comment-replies/:commentId", getCommentRepliesController)
