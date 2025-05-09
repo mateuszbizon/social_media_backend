@@ -13,6 +13,11 @@ export function getUserProfile(username: string) {
             firstName: true,
             lastName: true,
             avatar: true,
+            followers: {
+                select: {
+                    followerId: true
+                }
+            },
             _count: {
                 select: {
                     posts: true,

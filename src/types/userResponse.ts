@@ -1,4 +1,4 @@
-import { User } from "../../generated/prisma";
+import { Follow, User } from "../../generated/prisma";
 
 export type SignUpResponse = {
     user: Pick<User, "firstName" | "lastName" | "username">
@@ -14,6 +14,7 @@ export type GetUserProfileResponse = {
     postsCount: number
     followersCount: number
     followingCount: number
+    followers: Pick<Follow, "followerId">[]
 }
 
 export type UpdateUserProfileResponse = {

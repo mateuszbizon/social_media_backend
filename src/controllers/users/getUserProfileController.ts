@@ -27,7 +27,8 @@ export async function getUserProfileController(req: Request<GetUserProfileParams
             },
             postsCount: user._count.posts,
             followersCount: user._count.followers,
-            followingCount: user._count.following
+            followingCount: user._count.following,
+            followers: user.followers
         })
     } catch (error) {
         console.error(error)
