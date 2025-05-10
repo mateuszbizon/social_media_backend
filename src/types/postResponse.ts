@@ -31,3 +31,16 @@ export type GetUserPostsResponse = {
 }
 
 export type GetBasicPostResponse = Pick<Post, "id" | "content" | "image" | "authorId">
+
+export type GetFeedResponse = {
+    posts: {
+        id: Post["id"]
+        content: Post["content"]
+        image: Post["image"]
+        createdAt: Post["createdAt"]
+        author: Pick<User, "username" | "avatar" | "id">
+        likes: Pick<PostLike, "userId">[]
+        commentCount: number
+    }[]
+    nextPage: number | null
+}
