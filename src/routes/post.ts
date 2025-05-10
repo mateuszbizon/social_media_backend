@@ -20,5 +20,6 @@ router.get("/get-post/:postId", getPostController)
 router.get("/get-user-posts/:userId", getUserPostsController)
 router.get("/get-liked-posts", authMiddleware, getLikedPostsController)
 router.get("/get-basic-post/:postId", getBasicPostController)
+router.get("/get-feed")
 
 export default router
