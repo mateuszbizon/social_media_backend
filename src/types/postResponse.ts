@@ -43,4 +43,5 @@ export type GetFeedResponse = {
         commentCount: number
     }[]
     nextPage: number | null
+    currentPage: number
 }

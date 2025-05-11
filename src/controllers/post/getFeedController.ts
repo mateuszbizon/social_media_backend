@@ -23,6 +23,7 @@ export async function getFeedController(req: Request, res: Response<GetFeedRespo
                 }
             }),
             nextPage: feed.nextPage,
+            currentPage: feed.currentPage
         })
     } catch (error) {
         console.error(error)

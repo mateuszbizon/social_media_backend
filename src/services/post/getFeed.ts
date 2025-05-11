@@ -72,6 +72,7 @@ export async function getFeed({ page, userId }: Props) {
 
         return {
             posts,
+            currentPage: page,
             nextPage: page < totalPages ? page + 1 : null
         }
     }
@@ -123,6 +124,7 @@ export async function getFeed({ page, userId }: Props) {
 
     return {
         posts,
+        currentPage: page,
         nextPage: page < totalPages ? page + 1 : null
     }
 }
