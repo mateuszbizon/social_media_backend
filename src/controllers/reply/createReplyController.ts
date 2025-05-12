@@ -36,7 +36,22 @@ export async function createReplyController(req: Request<CreateReplyParams, {}, 
         })
 
         res.status(201).json({
-            reply: createdReply
+            reply: {
+                id: createdReply.id,
+                content: createdReply.content,
+                createdAt: createdReply.createdAt,
+                author: {
+                    id: createdReply.author.id,
+                    username: createdReply.author.username,
+                    avatar: createdReply.author.avatar,
+                },
+                likeCount: createdReply._count.likes,
+                isLiked: false,
+                replyingTo: {
+                    id: createdReply.replyingTo.id,
+                    username: createdReply.replyingTo.username,
+                }
+            }
         })
     } catch (error) {
         console.error(error)

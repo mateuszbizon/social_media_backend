@@ -1,9 +1,10 @@
-import { Reply, ReplyLike, User } from "../../generated/prisma"
+import { Reply, User } from "../../generated/prisma"
 
 export type CommentReply = Pick<Reply, "id" | "content" | "createdAt"> & {
-    likes: Pick<ReplyLike, "userId">[]
+    likeCount: number
     author: Pick<User, "username" | "avatar" | "id">
     replyingTo: Pick<User, "id" | "username">
+    isLiked: boolean
 }
 
 export type CreateReplyResponse = {

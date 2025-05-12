@@ -23,9 +23,9 @@ export function createReply({ commentId, content, authorId, replyingToId }: Prop
                     avatar: true
                 }
             },
-            likes: {
+            _count: {
                 select: {
-                    userId: true
+                    likes: true
                 }
             },
             replyingTo: {

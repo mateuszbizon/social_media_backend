@@ -3,12 +3,13 @@ import { GetCommentRepliesSearchParams } from "../../types/searchParams";
 
 type Props = GetCommentRepliesSearchParams & {
     commentId: string
+    userId: string | null
 }
 
 const prisma = new PrismaClient()
 const limit = 20
 
-export async function getCommentReplies({ commentId, page }: Props) {
+export async function getCommentReplies({ commentId, page, userId }: Props) {
     const skip = (page - 1) * limit
 
     const [replies, totalReplies] = await prisma.$transaction([
@@ -25,11 +26,16 @@ export async function getCommentReplies({ commentId, page }: Props) {
                 id: true,
                 content: true,
                 createdAt: true,
-                likes: {
-                    select: {
-                        userId: true
+                ...(userId && {
+                    likes: {
+                        where: {
+                            userId
+                        },
+                        select: {
+                            id: true
+                        }
                     }
-                },
+                }),
                 author: {
                     select: {
                         id: true,
@@ -41,6 +47,11 @@ export async function getCommentReplies({ commentId, page }: Props) {
                     select: {
                         id: true,
                         username: true
+                    }
+                },
+                _count: {
+                    select: {
+                        likes: true
                     }
                 }
             }
@@ -55,7 +66,10 @@ export async function getCommentReplies({ commentId, page }: Props) {
     const totalPages = Math.ceil(totalReplies / limit)
 
     return {
-        replies,
+        replies: replies.map(reply => ({
+            ...reply,
+            isLiked: userId ? reply.likes.length > 0 : false
+        })),
         currentPage: page,
         totalPages,
         totalReplies,
