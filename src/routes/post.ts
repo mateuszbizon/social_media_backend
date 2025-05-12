@@ -18,7 +18,7 @@ router.post("/create-post", authMiddleware, uploadFile.single("image"), createPo
 router.patch("/update-post/:postId", authMiddleware, uploadFile.single("image"), updatePostController)
 router.delete("/delete-post/:postId", authMiddleware, deletePostController)
 router.patch("/like-post/:postId", authMiddleware, likePostController)
-router.get("/get-post/:postId", getPostController)
+router.get("/get-post/:postId", optionalAuthMiddleware, getPostController)
 router.get("/get-user-posts/:userId", getUserPostsController)
 router.get("/get-liked-posts", authMiddleware, getLikedPostsController)
 router.get("/get-basic-post/:postId", getBasicPostController)

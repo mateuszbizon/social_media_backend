@@ -6,12 +6,14 @@ import { getFullPost } from "../../services/post/getFullPost";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { MESSAGES } from "../../constants/messages";
 import { GetPostResponse } from "../../types/postResponse";
+import { USER_ID } from "../../constants";
 
 export async function getPostController(req: Request<GetPostParams>, res: Response<GetPostResponse>, next: NextFunction) {
     const { postId } = req.params
+    const userId = res.locals[USER_ID] as string | null
 
     try {
-        const post = await getFullPost(postId)
+        const post = await getFullPost(postId, userId)
 
         if (!post) {
             return next(new NotFoundError(MESSAGES.post.notFound))
@@ -30,7 +32,8 @@ export async function getPostController(req: Request<GetPostParams>, res: Respon
                 avatar: post.author.avatar
             },
             commentsCount: post._count.comments,
-            likes: post.likes
+            likesCount: post._count.likes,
+            isLiked: post.isLiked
         })
     } catch (error) {
         console.error(error)

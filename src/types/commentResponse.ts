@@ -1,9 +1,10 @@
-import { Comment, CommentLike, User } from "../../generated/prisma"
+import { Comment, User } from "../../generated/prisma"
 
 export type PostComment = Pick<Comment, "id" | "content" | "createdAt"> & {
-    likes: Pick<CommentLike, "userId">[]
     author: Pick<User, "username" | "avatar" | "id">
     replyCount: number
+    likeCount: number
+    isLiked: boolean
 }
 
 export type CreateCommentResponse = {

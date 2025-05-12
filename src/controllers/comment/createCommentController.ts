@@ -44,8 +44,9 @@ export async function createCommentController(req: Request<CreateCommentParams, 
                     username: createdComment.author.username,
                     avatar: createdComment.author.avatar
                 },
-                likes: createdComment.likes,
-                replyCount: createdComment._count.replies
+                likeCount: createdComment._count.likes,
+                replyCount: createdComment._count.replies,
+                isLiked: false
             }
         })
     } catch (error) {

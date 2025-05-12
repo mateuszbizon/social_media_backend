@@ -22,14 +22,10 @@ export async function createComment({ content, postId, authorId }: Props) {
                     avatar: true
                 }
             },
-            likes: {
-                select: {
-                    userId: true
-                }
-            },
             _count: {
                 select: {
-                    replies: true
+                    replies: true,
+                    likes: true
                 }
             }
         }

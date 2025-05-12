@@ -4,12 +4,13 @@ import { createCommentController } from "../controllers/comment/createCommentCon
 import { deleteCommentController } from "../controllers/comment/deleteCommentController"
 import { likeCommentController } from "../controllers/comment/likeCommentController"
 import { getPostCommentsController } from "../controllers/comment/getPostCommentsController"
+import { optionalAuthMiddleware } from "../middlewares/optionalAuthMiddleware"
 
 const router = express.Router()
 
 router.post("/create-comment/:postId", authMiddleware, createCommentController)
 router.delete("/delete-comment/:commentId", authMiddleware, deleteCommentController)
 router.patch("/like-comment/:commentId", authMiddleware, likeCommentController)
-router.get("/get-post-comments/:postId", getPostCommentsController)
+router.get("/get-post-comments/:postId", optionalAuthMiddleware, getPostCommentsController)
 
 export default router

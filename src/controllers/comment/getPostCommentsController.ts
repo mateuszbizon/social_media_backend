@@ -6,13 +6,14 @@ import { getPostById } from "../../services/post/getPostById";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { MESSAGES } from "../../constants/messages";
 import { getPostComments } from "../../services/comment/getPostComments";
-import { GetPostCommentsSearchParams } from "../../types/searchParams";
 import { GetPostCommentsResponse } from "../../types/commentResponse";
+import { USER_ID } from "../../constants";
 
-export async function getPostCommentsController(req: Request<GetPostParams, {}, {}, GetPostCommentsSearchParams>, res: Response<GetPostCommentsResponse>, next: NextFunction) {
+export async function getPostCommentsController(req: Request<GetPostParams, {}, {}>, res: Response<GetPostCommentsResponse>, next: NextFunction) {
     const { postId } = req.params
     const page = Number(req.query.page) || 1
     const sort = req.query.sort === "desc" ? "desc" : "popular"
+    const userId = res.locals[USER_ID] as string | null
 
     try {
         const existingPost = await getPostById(postId)
@@ -24,14 +25,16 @@ export async function getPostCommentsController(req: Request<GetPostParams, {}, 
         const comments = await getPostComments({
             postId,
             page,
-            sort
+            sort,
+            userId
         })
 
         res.status(200).json({
             comments: comments.comments.map(comment => {
                 return {
                     ...comment,
-                    replyCount: comment._count.replies
+                    replyCount: comment._count.replies,
+                    likeCount: comment._count.likes
                 }
             }),
             currentPage: comments.currentPage,

@@ -12,7 +12,8 @@ export type GetPostResponse = {
     post: Pick<Post, "id" | "content" | "image" | "createdAt">
     author: Pick<User, "username" | "avatar" | "id">
     commentsCount: number
-    likes: Pick<PostLike, "userId">[]
+    likesCount: number
+    isLiked: boolean
 }
 
 export type GetUserPostsResponse = {
