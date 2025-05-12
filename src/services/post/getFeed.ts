@@ -47,14 +47,20 @@ export async function getFeed({ page, userId }: Props) {
                             avatar: true
                         }
                     },
-                    likes: {
-                        select: {
-                            userId: true
+                    ...(userId && {
+                        likes: {
+                            where: {
+                                userId
+                            },
+                            select: {
+                                id: true
+                            }
                         }
-                    },
+                    }),
                     _count: {
                         select: {
-                            comments: true
+                            comments: true,
+                            likes: true
                         }
                     }
                 }
@@ -71,7 +77,10 @@ export async function getFeed({ page, userId }: Props) {
         const totalPages = Math.ceil(totalPosts / limit)
 
         return {
-            posts,
+            posts: posts.map(post => ({
+                ...post,
+                isLiked: userId ? post.likes.length > 0 : false
+            })),
             currentPage: page,
             nextPage: page < totalPages ? page + 1 : null
         }
@@ -105,14 +114,20 @@ export async function getFeed({ page, userId }: Props) {
                         avatar: true
                     }
                 },
-                likes: {
-                    select: {
-                        userId: true
+                ...(userId && {
+                    likes: {
+                        where: {
+                            userId
+                        },
+                        select: {
+                            id: true
+                        }
                     }
-                },
+                }),
                 _count: {
                     select: {
-                        comments: true
+                        comments: true,
+                        likes: true
                     }
                 }
             }
@@ -123,7 +138,10 @@ export async function getFeed({ page, userId }: Props) {
     const totalPages = Math.ceil(totalPosts / limit)
 
     return {
-        posts,
+        posts: posts.map(post => ({
+            ...post,
+            isLiked: userId ? post.likes.length > 0 : false
+        })),
         currentPage: page,
         nextPage: page < totalPages ? page + 1 : null
     }

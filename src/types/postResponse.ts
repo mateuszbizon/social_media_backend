@@ -40,8 +40,9 @@ export type GetFeedResponse = {
         image: Post["image"]
         createdAt: Post["createdAt"]
         author: Pick<User, "username" | "avatar" | "id">
-        likes: Pick<PostLike, "userId">[]
+        likeCount: number
         commentCount: number
+        isLiked: boolean
     }[]
     nextPage: number | null
     currentPage: number

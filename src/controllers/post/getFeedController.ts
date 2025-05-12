@@ -19,7 +19,8 @@ export async function getFeedController(req: Request, res: Response<GetFeedRespo
             posts: feed.posts.map(post => {
                 return {
                     ...post,
-                    commentCount: post._count.comments
+                    commentCount: post._count.comments,
+                    likeCount: post._count.likes,
                 }
             }),
             nextPage: feed.nextPage,
