@@ -42,3 +42,7 @@ export type FollowUserParams = {
 export type GetCommentRepliesParams = {
     commentId: string
 }
+
+export type CreateMessageParams = {
+    chatId: string
+}
