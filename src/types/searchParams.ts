@@ -16,3 +16,7 @@ export type SearchUsersSearchParams = {
     page: number
     query: string
 }
+
+export type GetChatsSearchParams = {
+    page: number
+}
