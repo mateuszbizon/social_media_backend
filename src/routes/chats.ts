@@ -7,5 +7,6 @@ const router = express.Router()
 
 router.post("/create-chat", authMiddleware, createChatController)
 router.get("/get-chats", authMiddleware, getChatsController)
+router.post("/create-message/:chatId")
 
 export default router
