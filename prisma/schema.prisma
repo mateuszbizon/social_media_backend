@@ -31,6 +31,8 @@ model User {
   replyLikes  ReplyLike[]
   following     Follow[]  @relation("Following")
   followers     Follow[]  @relation("Followers")
+  sentMessages      Message[]
+  chats Chat[] @relation("UserChats")
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }
@@ -117,4 +119,25 @@ model Follow {
   createdAt     DateTime @default(now())
 
   @@unique([followerId, followingId])
+}
+
+model Chat {
+  id              String     @id @default(uuid())
+  participants User[]     @relation("UserChats")
+  messages        Message[] @relation("Messages")
+  lastMessage     Message?   @relation("LastMessage", fields: [lastMessageId], references: [id])
+  lastMessageId   String? @unique
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  chat      Chat     @relation("Messages", fields: [chatId], references: [id], onDelete: Cascade)
+  chatId    String
+  chatLastMessage Chat? @relation("LastMessage")
+  sender    User     @relation(fields: [senderId], references: [id])
+  senderId  String
+  content   String
+  createdAt DateTime @default(now())
 }
