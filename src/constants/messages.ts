@@ -28,5 +28,8 @@ export const MESSAGES = {
     },
     reply: {
         notFound: "Comment reply not found"
+    },
+    chat: {
+        alreadyExist: "Chat already exist"
     }
 }
