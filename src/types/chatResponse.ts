@@ -24,3 +24,7 @@ export type GetChatsResponse = {
 export type CreateMessageResponse = {
     chatMessage: Message
 }
+
+export type GetChatMessagesResponse = {
+    messages: Message[]
+}

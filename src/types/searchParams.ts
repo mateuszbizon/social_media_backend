@@ -20,3 +20,7 @@ export type SearchUsersSearchParams = {
 export type GetChatsSearchParams = {
     page: number
 }
+
+export type GetChatMessagesSearchParams = {
+    cursorId?: string
+}
