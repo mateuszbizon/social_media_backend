@@ -19,5 +19,5 @@ export const FILE_TYPE_NOT_ALLOWED = "Not allowed file type. JPG or PNG allowed"
 export const COMMENT_EMPTY = "Comment can't be empty"
 
 export const USER_ID_EMPTY = "User ID cannot be empty"
-export const CHAT_ARRAY_LENGTH = 2
+export const CHAT_ARRAY_LENGTH = 1
 export const CHAT_ARRAY_MESSAGE = `At least ${CHAT_ARRAY_LENGTH} users are required to create a chat`

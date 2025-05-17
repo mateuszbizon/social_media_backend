@@ -7,9 +7,11 @@ import { createChat } from "../../services/chats/createChat";
 import { CreateChatResponse } from "../../types/chatResponse";
 import { getChatByUserIds } from "../../services/chats/getChatByUserIds";
 import { MESSAGES } from "../../constants/messages";
+import { USER_ID } from "../../constants";
 
 export async function createChatController(req: Request<{}, {}, ChatSchema>, res: Response<CreateChatResponse>, next: NextFunction) {
     const { userIds } = req.body
+    const userId = res.locals[USER_ID] as string
 
     try {
         const validationResult = chatSchema.safeParse(req.body)
@@ -18,13 +20,15 @@ export async function createChatController(req: Request<{}, {}, ChatSchema>, res
             return next(new BadRequestError(validationResult.error.errors[0].message))
         }
 
-        const existingChat = await getChatByUserIds(userIds)
+        const finalUserIds = [...userIds, userId]
+
+        const existingChat = await getChatByUserIds(finalUserIds)
 
         if (existingChat) {
             return next(new BadRequestError(MESSAGES.chat.alreadyExist))
         }
 
-        const createdChat = await createChat(userIds)
+        const createdChat = await createChat(finalUserIds)
 
         res.status(201).json({
             chat: createdChat
