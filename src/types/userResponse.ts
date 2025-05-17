@@ -24,6 +24,7 @@ export type UpdateUserProfileResponse = {
 
 export type SearchUsersResponse = {
     users: {
+        id: User["id"]
         username: User["username"]
         firstName: User["firstName"]
         lastName: User["lastName"]

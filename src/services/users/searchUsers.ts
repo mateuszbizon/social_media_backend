@@ -24,6 +24,7 @@ export async function searchUsers({ page, query }: SearchUsersSearchParams) {
                 }
             },
             select: {
+                id: true,
                 username: true,
                 firstName: true,
                 lastName: true,
