@@ -18,7 +18,12 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 3001
 const server = createServer(app)
-const io = new Server(server)
+const io = new Server(server, {
+    cors: {
+        origin: process.env.FRONTEND_URL,
+        methods: ["GET", "POST"],
+    }
+})
 
 app.use(bodyParser.json())
 app.use(cors())
