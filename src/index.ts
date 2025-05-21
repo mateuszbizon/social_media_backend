@@ -11,6 +11,7 @@ import postRoutes from "./routes/post"
 import commentRoutes from "./routes/comment"
 import replyRoutes from "./routes/reply"
 import chatRoutes from "./routes/chats"
+import { Message } from "./types/chatResponse"
 
 dotenv.config()
 
@@ -33,6 +34,15 @@ app.use(errorHandler)
 
 io.on("connection", (socket) => {
     console.log("Socket connected: " + socket.id)
+
+    socket.on("joinChat", ({ chatId, userId }: { chatId: string, userId: string }) => {
+        socket.join(chatId)
+        console.log(`User with id ${userId} joined chat ${chatId}`)
+    })
+
+    socket.on("sendMessage", ({ chatId, message }: { chatId: string, message: Message }) => {
+        socket.to(chatId).emit("receiveMessage", message)
+    })
 })
 
 server.listen(port, () => {
