@@ -48,6 +48,14 @@ io.on("connection", (socket) => {
     socket.on("sendMessage", ({ chatId, message }: { chatId: string, message: Message }) => {
         socket.to(chatId).emit("receiveMessage", message)
     })
+
+    socket.on("typing", ({ chatId }: { chatId: string }) => {
+        socket.to(chatId).emit("typing")
+    })
+
+    socket.on("stopTyping", ({ chatId }: { chatId: string }) => {
+        socket.to(chatId).emit("stopTyping")
+    })
 })
 
 server.listen(port, () => {
